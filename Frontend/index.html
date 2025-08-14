@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Trend Based Data</title>
+<link rel="stylesheet" href="style.css" />
+<!-- Load Lightweight Charts only once -->
+<script src="https://unpkg.com/lightweight-charts@4.1.0/dist/lightweight-charts.standalone.development.js"></script>
+
+</head>
+<body>
+
+<header>
+  <h1>Market Trend Based on Data Analytics</h1>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li class="dropdown">
+      <a href="#">Index</a>
+      <div class="dropdown-content">
+        <a href="#">Option 1</a>
+        <a href="#">Option 2</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="#">VEGA</a>
+      <div class="dropdown-content">
+        <a href="#">Option 1</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="#">THETA</a>
+      <div class="dropdown-content">
+        <a href="#">Option 1</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="#">OI</a>
+      <div class="dropdown-content">
+        <a href="#">Option 1</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="#">CHANGE OI</a>
+      <div class="dropdown-content">
+        <a href="#">Option 1</a>
+      </div>
+    </li>
+    <li><a href="#">Contact Us</a></li>
+  </ul>
+</nav>
+
+<section>
+  <table id="dataTable">
+    <thead>
+      <tr>
+        <th>Time</th><th>Strength</th><th>CMP</th><th>Index Change</th>
+        <th>Vega</th><th>Theta</th><th>OI</th>
+        <th>PDH</th><th>PDL</th><th>CWH</th><th>CWL</th>
+        <th>PWH</th><th>PWL</th><th>PMH</th><th>PML</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- rows will be filled dynamically -->
+    </tbody>
+  </table>
+</section>
+
+<section class="charts-container">
+  <div class="chart-block">
+    <h2>BANKNIFTY Trends</h2>
+    <div id="chart_BANKNIFTY" style="height:360px; width:100%; margin-bottom:30px;"></div>
+  </div>
+  <div class="chart-block">
+    <h2>NIFTY Trends</h2>
+    <div id="chart_NIFTY" style="height:360px; width:100%; margin-bottom:30px;"></div>
+  </div>
+  <div class="chart-block">
+    <h2>SENSEX Trends</h2>
+    <div id="chart_SENSEX" style="height:360px; width:100%; margin-bottom:30px;"></div>
+  </div>
+</section>
+
+<p id="lastUpdated">Last updated: </p>
+
+<!-- Your main script -->
+<script src="script.js"></script>
+
+</body>
+</html>
