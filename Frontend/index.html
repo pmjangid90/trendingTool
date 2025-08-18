@@ -2,92 +2,258 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Market Trend Based Data</title>
 <link rel="stylesheet" href="style.css" />
-<!-- Load Lightweight Charts only once -->
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Lightweight Charts -->
 <script src="https://unpkg.com/lightweight-charts@4.1.0/dist/lightweight-charts.standalone.development.js"></script>
-
 </head>
-<body>
 
-<header>
-  <h1>Market Trend Based on Data Analytics</h1>
-</header>
+<body class="bg-light">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top" style="background-color: #343148;" role="navigation" aria-label="Main navigation">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold" href="#" style="color: #D7C49E;">
+      Market Trend Analytics
+    </a>
 
-<nav>
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li class="dropdown">
-      <a href="#">Index</a>
-      <div class="dropdown-content">
-        <a href="#">Option 1</a>
-        <a href="#">Option 2</a>
-      </div>
-    </li>
-    <li class="dropdown">
-      <a href="#">VEGA</a>
-      <div class="dropdown-content">
-        <a href="#">Option 1</a>
-      </div>
-    </li>
-    <li class="dropdown">
-      <a href="#">THETA</a>
-      <div class="dropdown-content">
-        <a href="#">Option 1</a>
-      </div>
-    </li>
-    <li class="dropdown">
-      <a href="#">OI</a>
-      <div class="dropdown-content">
-        <a href="#">Option 1</a>
-      </div>
-    </li>
-    <li class="dropdown">
-      <a href="#">CHANGE OI</a>
-      <div class="dropdown-content">
-        <a href="#">Option 1</a>
-      </div>
-    </li>
-    <li><a href="#">Contact Us</a></li>
-  </ul>
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="#" style="color: #D7C49E;">Home</a>
+        </li>
+
+        <!-- Dropdown: Index -->
+        <li class="nav-item dropdown" role="menu">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" style="color: #D7C49E;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="indexDropdown">Index</a>
+          <ul class="dropdown-menu" aria-labelledby="indexDropdown" style="background-color: #343148;">
+            <li><a class="dropdown-item" href="#" style="color: #D7C49E;">Option 1</a></li>
+            <li><a class="dropdown-item" href="#" style="color: #D7C49E;">Option 2</a></li>
+          </ul>
+        </li>
+
+        <!-- Dropdown: VEGA -->
+        <li class="nav-item dropdown" role="menu">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" style="color: #D7C49E;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="vegaDropdown">VEGA</a>
+          <ul class="dropdown-menu" aria-labelledby="vegaDropdown" style="background-color: #343148;">
+            <li><a class="dropdown-item" href="#" style="color: #D7C49E;">Option 1</a></li>
+          </ul>
+        </li>
+
+        <!-- Dropdown: THETA -->
+        <li class="nav-item dropdown" role="menu">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" style="color: #D7C49E;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="thetaDropdown">THETA</a>
+          <ul class="dropdown-menu" aria-labelledby="thetaDropdown" style="background-color: #343148;">
+            <li><a class="dropdown-item" href="#" style="color: #D7C49E;">Option 1</a></li>
+          </ul>
+        </li>
+
+        <!-- Dropdown: OI -->
+        <li class="nav-item dropdown" role="menu">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" style="color: #D7C49E;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="oiDropdown">OI</a>
+          <ul class="dropdown-menu" aria-labelledby="oiDropdown" style="background-color: #343148;">
+            <li><a class="dropdown-item" href="#" style="color: #D7C49E;">Option 1</a></li>
+          </ul>
+        </li>
+
+        <!-- Dropdown: CHANGE OI -->
+        <li class="nav-item dropdown" role="menu">
+          <a class="nav-link dropdown-toggle fw-bold" href="#" style="color: #D7C49E;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="changeOiDropdown">CHANGE OI</a>
+          <ul class="dropdown-menu" aria-labelledby="changeOiDropdown" style="background-color: #343148;">
+            <li><a class="dropdown-item" href="#" style="color: #D7C49E;">Option 1</a></li>
+          </ul>
+        </li>
+
+        <!-- Contact -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="#" style="color: #D7C49E;">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>
 
-<section>
-  <table id="dataTable">
-    <thead>
-      <tr>
-        <th>Time</th><th>Strength</th><th>CMP</th><th>Index Change</th>
-        <th>Vega</th><th>Theta</th><th>OI</th>
-        <th>PDH</th><th>PDL</th><th>CWH</th><th>CWL</th>
-        <th>PWH</th><th>PWL</th><th>PMH</th><th>PML</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- rows will be filled dynamically -->
-    </tbody>
-  </table>
+<!-- Data Table -->
+<section class="container-fluid mb-4">
+  <div class="table-responsive shadow rounded">
+    <table id="dataTable" aria-describedby="tableDescription">
+    <colgroup>
+    <col style="width: 70px;">
+    <col style="width: 70px;">
+    <col style="width: 50px;">
+    <col style="width: 70px;">  
+    <col style="width: 60px;">
+    <col style="width: 60px;">
+    <col style="width: 60px;">
+    <col style="width: 60px;">
+    <col style="width: 50px;">
+    <col style="width: 50px;">
+    <col style="width: 50px;">
+    <col style="width: 50px;">
+    <col style="width: 50px;">
+    <col style="width: 50px;">
+    <col style="width: 50px;">
+    <col style="width: 50px;">
+
+  </colgroup>
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">Time</th>
+          <th scope="col">Strength</th>
+          <th scope="col">LTP</th>
+          <th scope="col">%_Change</th>
+          <th scope="col">OI</th>
+          <th scope="col">Dx</th>
+          <th scope="col">Vega</th>
+          <th scope="col">Theta</th>
+          <th scope="col">PDH</th>
+          <th scope="col">PDL</th>
+          <th scope="col">CWH</th>
+          <th scope="col">CWL</th>
+          <th scope="col">PWH</th>
+          <th scope="col">PWL</th>
+          <th scope="col">PMH</th>
+          <th scope="col">PML</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- rows filled dynamically -->
+      </tbody>
+    </table>
+  </div>
 </section>
 
-<section class="charts-container">
-  <div class="chart-block">
-    <h2>BANKNIFTY Trends</h2>
-    <div id="chart_BANKNIFTY" style="height:360px; width:100%; margin-bottom:30px;"></div>
+<!-- Charts -->
+<!-- Charts -->
+ <section class="container-fluid charts-container">
+
+  <!-- Row: Two Charts -->
+  <div class="chart-row">
+    <h4 class="text-primary chart-heading mb-2 text-center">BANKNIFTY Vs OI Vs D-Exposure</h4>
+
+    <div class="row g-3">
+      
+      <!-- Chart 1 -->
+      <div class="col-md-6">
+        <div class="chart-box">
+          <div id="chart_BANKNIFTY_OI" style="height:360px;" aria-describedby="chartDesc_BANKNIFTY_OI"></div>
+          <div id="chartDesc_BANKNIFTY_OI" class="visually-hidden">
+            Line chart showing BANKNIFTY LTP and Net OI trends with dual axes.
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart 2 -->
+      <div class="col-md-6">
+        <div class="chart-box">
+          <div id="chart_BANKNIFTY_DEX" style="height:360px;" aria-describedby="chartDesc_BANKNIFTY_DEX"></div>
+          <div id="chartDesc_BANKNIFTY_DEX" class="visually-hidden">
+            Line chart showing BANKNIFTY Delta Exposure trends.
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <div class="chart-block">
-    <h2>NIFTY Trends</h2>
-    <div id="chart_NIFTY" style="height:360px; width:100%; margin-bottom:30px;"></div>
+
+  <!-- Row: Two Charts -->
+  <div class="chart-row">
+    <h4 class="text-primary chart-heading mb-2 text-center">NIFTY Vs OI Vs D-Exposure</h4>
+
+    <div class="row g-3">
+      
+      <!-- Chart 1 -->
+      <div class="col-md-6">
+        <div class="chart-box">
+          <div id="chart_NIFTY_OI" style="height:360px;" aria-describedby="chartDesc_NIFTY_OI"></div>
+          <div id="chartDesc_NIFTY_OI" class="visually-hidden">
+            Line chart showing NIFTY LTP and Net OI trends with dual axes.
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart 2 -->
+      <div class="col-md-6">
+        <div class="chart-box">
+          <div id="chart_NIFTY_DEX" style="height:360px;" aria-describedby="chartDesc_NIFTY_DEX"></div>
+          <div id="chartDesc_NIFTY_DEX" class="visually-hidden">
+            Line chart showing NIFTY Delta Exposure trends.
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <div class="chart-block">
-    <h2>SENSEX Trends</h2>
-    <div id="chart_SENSEX" style="height:360px; width:100%; margin-bottom:30px;"></div>
+
+
+    <!-- Row: Two Charts -->
+  <div class="chart-row">
+    <h4 class="text-primary chart-heading mb-2 text-center">SENSEX Vs OI Vs D-Exposure</h4>
+
+    <div class="row g-3">
+      
+      <!-- Chart 1 -->
+      <div class="col-md-6">
+        <div class="chart-box">
+          <div id="chart_SENSEX_OI" style="height:360px;" aria-describedby="chartDesc_SENSEX_OI"></div>
+          <div id="chartDesc_SENSEX_OI" class="visually-hidden">
+            Line chart showing SENSEX LTP and Net OI trends with dual axes.
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart 2 -->
+      <div class="col-md-6">
+        <div class="chart-box">
+          <div id="chart_SENSEX_DEX" style="height:360px;" aria-describedby="chartDesc_SENSEX_DEX"></div>
+          <div id="chartDesc_SENSEX_DEX" class="visually-hidden">
+            Line chart showing SENSEX Delta Exposure trends.
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
+
+
+
 </section>
 
-<p id="lastUpdated">Last updated: </p>
 
-<!-- Your main script -->
+
+
+
+
+<!-- Last Updated -->
+<p id="lastUpdated" class="text-center fw-bold mt-4" aria-live="polite" aria-atomic="true">Last updated: </p>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
 
+<!-- Dynamic padding so table never touches navbar -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  function adjustPadding() {
+    const navbar = document.querySelector(".navbar");
+    if (navbar) {
+      document.body.style.paddingTop = navbar.offsetHeight + "px";
+      const firstSection = document.querySelector("section.container");
+      if (firstSection) firstSection.style.marginTop = "20px";
+    }
+  }
+  adjustPadding();
+  window.addEventListener("resize", adjustPadding);
+});
+</script>
 </body>
 </html>
