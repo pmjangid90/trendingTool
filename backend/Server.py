@@ -9,21 +9,21 @@ app = Flask(__name__)
 CORS(app)
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
-
+date_str = datetime.now().strftime("%Y-%m-%d")
 SNAPSHOT_FILES = {
-    "NIFTY": "snapshots_NIFTY_2025-08-14.txt",
-    "BANKNIFTY": "snapshots_BANKNIFTY_2025-08-14.txt",
-    "SENSEX": "snapshots_SENSEX_2025-08-14.txt"
+    "NIFTY": f"snapshots_NIFTY_{date_str}.txt",
+    "BANKNIFTY": f"snapshots_BANKNIFTY_{date_str}.txt",
+    "SENSEX": f"snapshots_SENSEX_{date_str}.txt"
 }
 
 # Map index name to today's CSV filename
+
+
 CSV_FILES = {
-     "BANKNIFTY": f"Sentiments_BANKNIFTY_{datetime.datetime.now().strftime('%d%b')}.csv",
-     "NIFTY": f"Sentiments_NIFTY_{datetime.datetime.now().strftime('%d%b')}.csv",
-     "SENSEX": f"Sentiments_SENSEX_{datetime.datetime.now().strftime('%d%b')}.csv"
+      "BANKNIFTY": f"Sentiments_BANKNIFTY_{datetime.datetime.now().strftime('%d%b')}.csv",
+      "NIFTY": f"Sentiments_NIFTY_{datetime.datetime.now().strftime('%d%b')}.csv",
+      "SENSEX": f"Sentiments_SENSEX_{datetime.datetime.now().strftime('%d%b')}.csv"
 }
-
-
 @app.route("/api/snapshots")
 def get_snapshots():
     """
@@ -94,7 +94,9 @@ def get_chartdata():
                         "ltp": safe_float(row.get("ltp")),
                         "ltp_ma": safe_float(row.get("ltp_ma")),
                         "net_oi_change": safe_float(row.get("net_oi_change")),
-                        "net_oi_ma": safe_float(row.get("net_oi_ma"))
+                        "net_oi_ma": safe_float(row.get("net_oi_ma")),
+                        "net_dex": safe_float(row.get("net_dex")),
+                        "net_dex_ma": safe_float(row.get("net_dex_ma"))                        
                     })
 
             data_points.sort(key=lambda x: x["time"])
